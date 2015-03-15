@@ -1,0 +1,74 @@
+﻿@model GreenGrazingGoat.Models.Lot
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Lot</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GoatID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoatID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoatName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoatName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerFirst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerFirst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerLast)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerLast)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LotAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LotAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LotDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LotDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LotID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

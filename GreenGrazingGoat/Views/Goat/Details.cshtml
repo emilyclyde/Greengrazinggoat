@@ -1,0 +1,65 @@
+﻿@model GreenGrazingGoat.Models.Goat
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Goat</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GoatName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoatName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoatColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoatColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoatType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoatType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoatGender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoatGender)
+        </dd>
+        <dd>
+            <table class="table">
+                <tr>
+
+                    <th>Field</th>
+                </tr>
+                @foreach (var item in Model.Pastures)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Field)
+                        </td>
+                    </tr>
+                }
+            </table>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GoatID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

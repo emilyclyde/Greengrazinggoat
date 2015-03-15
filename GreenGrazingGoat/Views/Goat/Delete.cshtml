@@ -1,0 +1,56 @@
+﻿@model GreenGrazingGoat.Models.Goat
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Goat</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GoatName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoatName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoatColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoatColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoatType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoatType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoatGender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoatGender)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

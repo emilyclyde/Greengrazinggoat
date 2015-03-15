@@ -1,0 +1,65 @@
+﻿@model IEnumerable<GreenGrazingGoat.Models.Lot>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        Find by Lot Address: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+       <th>
+            @Html.DisplayNameFor(model => model.GoatName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerFirst)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerLast)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LotAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LotDescription)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.GoatName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerFirst)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerLast)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LotAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LotDescription)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LotID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LotID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LotID })
+        </td>
+    </tr>
+}
+
+</table>
