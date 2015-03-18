@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title -Grazing Green Goats</title>
+    <title>@ViewBag.Title -Green Grazing Goat</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -17,7 +17,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Grazing Green Goat", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Green Grazing Goat", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -28,6 +28,7 @@
                     <li>@Html.ActionLink("Customers", "Index", "Customer")</li>
                     <li>@Html.ActionLink("Lot", "Index", "Lot/Index")</li>
                     <li>@Html.ActionLink("Sales", "Index", "Sale/Index")</li>
+                    <li>@Html.ActionLink("Education", "Index", "Education/Index")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -37,10 +38,10 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year -Grazing Green Goats</p>
+            <p>&copy; @DateTime.Now.Year -Green Grazing Goat</p>
         </footer>
     </div>
-
+    
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

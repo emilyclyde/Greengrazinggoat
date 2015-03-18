@@ -14,21 +14,17 @@ namespace GreenGrazingGoat.Controllers
   public class CustomerController : Controller
   {
     private GreenContext db = new GreenContext();
-
     // GET: Customer
-    public ActionResult Index(string sortOrder, string searchString)
+    public ActionResult Index(string searchString)
     {
-
       var customers = from c in db.Customers
-                      select c;
+                  select c;
 
       if (!String.IsNullOrEmpty(searchString))
       {
         customers = customers.Where(c => c.CustomerLast.Contains(searchString));
       }
-
       return View(customers.ToList());
-
     }
 
     // GET: Customer/Details/5
@@ -57,24 +53,18 @@ namespace GreenGrazingGoat.Controllers
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Create([Bind(Include = "CustomerID,CustomerFirst,Customer_Last,CustomerAddress,CustomerEmail")] Customer customer)
+    public ActionResult Create([Bind(Include = "CustomerID,CustomerFirst,CustomerLast,CustomerAddress,CustomerEmail")] Customer customer)
     {
-      try
+      if (ModelState.IsValid)
       {
-        if (ModelState.IsValid)
-        {
-          db.Customers.Add(customer);
-          db.SaveChanges();
-          return RedirectToAction("Index");
-        }
+        db.Customers.Add(customer);
+        db.SaveChanges();
+        return RedirectToAction("Index");
       }
-      catch (DataException /* dex */)
-      {
-        //Log the error (uncomment dex variable name and add a line here to write a log.
-        ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
-      }
+
       return View(customer);
     }
+
     // GET: Customer/Edit/5
     public ActionResult Edit(int? id)
     {
@@ -93,46 +83,25 @@ namespace GreenGrazingGoat.Controllers
     // POST: Customer/Edit/5
     // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
     // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-
-    [HttpPost, ActionName("Edit")]
+    [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult EditPost(int? id)
+    public ActionResult Edit([Bind(Include = "CustomerID,CustomerFirst,CustomerLast,CustomerAddress,CustomerEmail")] Customer customer)
     {
-      if (id == null)
+      if (ModelState.IsValid)
       {
-        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        db.Entry(customer).State = EntityState.Modified;
+        db.SaveChanges();
+        return RedirectToAction("Index");
       }
-      var customerToUpdate = db.Customers.Find(id);
-      if (TryUpdateModel(customerToUpdate, "",
-         new string[] { "CustomerID", "CustomerFirst", "CustomerLast", "CustomerAddress", "CustomerEmail" }))
-      {
-        try
-        {
-          db.Entry(customerToUpdate).State = EntityState.Modified;
-          db.SaveChanges();
-
-          return RedirectToAction("Index");
-        }
-        catch (DataException /* dex */)
-        {
-          //Log the error (uncomment dex variable name and add a line here to write a log.
-          ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
-        }
-      }
-      return View(customerToUpdate);
+      return View(customer);
     }
 
     // GET: Customer/Delete/5
-
-    public ActionResult Delete(int? id, bool? saveChangesError = false)
+    public ActionResult Delete(int? id)
     {
       if (id == null)
       {
         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-      }
-      if (saveChangesError.GetValueOrDefault())
-      {
-        ViewBag.ErrorMessage = "Delete failed. Try again, and if the problem persists see your system administrator.";
       }
       Customer customer = db.Customers.Find(id);
       if (customer == null)
@@ -145,19 +114,11 @@ namespace GreenGrazingGoat.Controllers
     // POST: Customer/Delete/5
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public ActionResult Delete(int id)
+    public ActionResult DeleteConfirmed(int id)
     {
-      try
-      {
-        Customer customer = db.Customers.Find(id);
-        db.Customers.Remove(customer);
-        db.SaveChanges();
-      }
-      catch (DataException/* dex */)
-      {
-        //Log the error (uncomment dex variable name and add a line here to write a log.
-        return RedirectToAction("Delete", new { id = id, saveChangesError = true });
-      }
+      Customer customer = db.Customers.Find(id);
+      db.Customers.Remove(customer);
+      db.SaveChanges();
       return RedirectToAction("Index");
     }
 

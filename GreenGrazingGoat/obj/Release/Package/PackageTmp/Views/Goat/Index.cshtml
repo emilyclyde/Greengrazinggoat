@@ -5,6 +5,13 @@
 }
 
 <h2>Index</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        Find by Goat Name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -26,26 +33,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.GoatName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GoatColor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GoatType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GoatGender)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.GoatID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.GoatID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.GoatID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GoatName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GoatColor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GoatType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GoatGender)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.GoatID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.GoatID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.GoatID })
+            </td>
+        </tr>
+    }
 
 </table>

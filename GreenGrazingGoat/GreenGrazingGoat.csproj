@@ -218,6 +218,7 @@
     <None Include="Properties\PublishProfiles\grazinggoat %285%29.pubxml" />
     <None Include="Properties\PublishProfiles\grazinggoat %286%29.pubxml" />
     <None Include="Properties\PublishProfiles\grazinggoat.pubxml" />
+    <None Include="Properties\PublishProfiles\greengrazinggoat.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

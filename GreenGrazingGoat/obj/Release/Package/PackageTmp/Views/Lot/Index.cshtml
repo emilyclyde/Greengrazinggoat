@@ -5,19 +5,20 @@
 }
 
 <h2>Index</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        Find by Lot Address: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.GoatID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerID)
-        </th>
-        <th>
+       <th>
             @Html.DisplayNameFor(model => model.GoatName)
         </th>
         <th>
@@ -37,12 +38,7 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.GoatID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CustomerID)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.GoatName)
         </td>
